@@ -26,5 +26,5 @@ const value = language.map((lang) => {
   };
 });
 
-console.log(introduction);
+console.log(introduction);   
 console.log(value);
