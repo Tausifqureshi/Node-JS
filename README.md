@@ -1,45 +1,45 @@
 # 🚀 Node.js Revision & Practical Guide
 
-Welcome to the **Node.js Complete Revision Repository**! This project is structured to help you learn and revise Node.js from scratch. It focuses on the latest interview standards, clearly comparing **Old Tarika (Legacy Code)** with the **New Tarika (Modern ES6+ Code)**.
+Welcome to the **Node.js Complete Revision Repository**! This project is structured to help developers learn and revise core Node.js concepts from scratch. It focuses on modern industry standards, clearly comparing legacy approaches with modern ES6+ practices (like Async/Await vs Callbacks).
 
 ## 📂 Folder Structure & Topics Covered
 
-Each folder contains:
-- `thory.js`: Detailed explanation of the topic (Interview-ready concepts).
-- `practical.js`: Actual runnable code with different ways (Tarika 1, Tarika 2, etc.) to implement the concept.
+Each folder is dedicated to a specific topic and contains:
+- `thory.js`: Detailed theoretical concepts and interview-prep notes.
+- `practical.js`: Runnable code snippets demonstrating different implementation methods.
 
 | Topic | Description |
 | :--- | :--- |
-| 🌐 **Node_Server_Creation** | How to create a basic Node.js HTTP server. |
-| 📦 **NPM_and_PackageJSON** | Understanding NPM, dependencies, and package.json. |
-| 🔄 **Modules_CommonJS_vs_ESM** | Old `require()` vs Modern `import/export`. |
-| 📁 **FS_Module** | File System operations (Sync vs Async/Await). |
-| 🛤️ **Path_Module** | Handling file paths across different OS. |
+| 🌐 **Node_Server_Creation** | Setting up a basic Node.js HTTP server. |
+| 📦 **NPM_and_PackageJSON** | Understanding NPM, dependencies, and `package.json`. |
+| 🔄 **Modules_CommonJS_vs_ESM** | Legacy `require()` vs Modern `import/export`. |
+| 📁 **FS_Module** | File System operations using modern Promises. |
+| 🛤️ **Path_Module** | Handling file paths across different operating systems. |
 | 📡 **HTTP_Module** | Building and routing with the core HTTP module. |
-| 🔐 **Environment_Variables** | Securing keys using `dotenv` and `process.env`. |
-| ⏱️ **Async_Programming** | Concept of Blocking vs Non-Blocking code. |
-| 🔗 **Callbacks_Promises_AsyncAwait** | Handling async code from Callbacks to Modern Async/Await. |
-| 🔁 **Event_Loop** | Understanding the heart of Node.js execution. |
-| ⚠️ **Error_Handling** | Catching errors gracefully without crashing the server. |
+| 🔐 **Environment_Variables** | Securing sensitive keys using `dotenv`. |
+| ⏱️ **Async_Programming** | Concepts of Blocking vs Non-Blocking execution. |
+| 🔗 **Callbacks_Promises_AsyncAwait** | Evolution of handling async code in Node.js. |
+| 🔁 **Event_Loop** | Understanding the core architecture of Node.js execution. |
+| ⚠️ **Error_Handling** | Catching errors gracefully to prevent server crashes. |
 | 🛠️ **Middleware** | Intercepting requests (Core concept for Express.js). |
 
 ---
 
-## 📸 Core Practical Examples (Main Code Snippets)
+## 📸 Core Practical Examples
 
-Here are some of the most important concepts we covered in this repository. *(Ye code blocks GitHub par bilkul clear screenshots ki tarah dikhenge aur yahan se code copy karna bhi asaan hoga!)*
+Below are a few key snippets demonstrating the modern implementation of core Node.js concepts covered in this repository.
 
 ### 1. Creating a Basic Node Server (`Node_Server_Creation`)
-*Node.js ka sabse main kaam server banana hai. Niche diya gaya code ek basic server banata hai jo different routes handle karta hai.*
+*A simple demonstration of creating an HTTP server and handling different routes.*
 
 ```javascript
 const http = require("http");
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
-    res.end("Hello Tausif! Ye tumhara pehla Node.js Server hai.");
+    res.end("Hello! This is our first Node.js Server.");
   } else if (req.url === "/about") {
-    res.end("Ye hamara About Page hai.");
+    res.end("This is the About Page.");
   } else {
     res.writeHead(404);
     res.end("404 - Page Not Found!");
@@ -51,24 +51,24 @@ server.listen(8000, () => {
 });
 ```
 
-### 2. Modern Async/Await for API Calls (`Callbacks_Promises_AsyncAwait`)
-*Interview me hamesha asynchronous code ke liye modern `async/await` ka tarika (Tarika 3) batana chahiye.*
+### 2. Modern Async/Await Implementation (`Callbacks_Promises_AsyncAwait`)
+*Avoiding callback hell by using modern `async/await` syntax for asynchronous operations.*
 
 ```javascript
-// Dummy Promise Function
+// A Promise-based mock API function
 const fetchWithPromise = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve({ id: 2, name: "Promise Data" }), 2000);
   });
 };
 
-// Modern Tarika (Async/Await)
+// Modern Async/Await execution
 const getUserAsync = async () => {
   try {
     const data = await fetchWithPromise(); 
-    console.log("Tarika 3 (New Way) Output:", data);
+    console.log("Async/Await Output:", data);
   } catch (err) {
-    console.log("Tarika 3 (New Way) Error:", err);
+    console.log("Error:", err);
   }
 };
 
@@ -76,14 +76,14 @@ getUserAsync();
 ```
 
 ### 3. File System with Promises (`FS_Module`)
-*Files read/write karne ke liye callbacks (Old Tarika) chhod kar ab `fs/promises` (New Tarika) use karna best practice hai.*
+*Using the modern `fs/promises` module instead of legacy callback-based file operations.*
 
 ```javascript
 const fsNew = require("fs/promises");
 
 const performFileOperations = async () => {
   try {
-    await fsNew.writeFile("demoNew.txt", "New Tarika Se Data");
+    await fsNew.writeFile("demoNew.txt", "Data written using Modern FS");
     const data = await fsNew.readFile("demoNew.txt", "utf-8");
     
     console.log("Data Read:", data);
