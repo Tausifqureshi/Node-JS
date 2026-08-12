@@ -5,23 +5,24 @@ Welcome to the **Node.js Complete Revision Repository**! This project is structu
 ## 📂 Folder Structure & Topics Covered
 
 Each folder is dedicated to a specific topic and contains:
+
 - `thory.js`: Detailed theoretical concepts and interview-prep notes.
 - `practical.js`: Runnable code snippets demonstrating different implementation methods.
 
-| Topic | Description |
-| :--- | :--- |
-| 🌐 **Node_Server_Creation** | Setting up a basic Node.js HTTP server. |
-| 📦 **NPM_and_PackageJSON** | Understanding NPM, dependencies, and `package.json`. |
-| 🔄 **Modules_CommonJS_vs_ESM** | Legacy `require()` vs Modern `import/export`. |
-| 📁 **FS_Module** | File System operations using modern Promises. |
-| 🛤️ **Path_Module** | Handling file paths across different operating systems. |
-| 📡 **HTTP_Module** | Building and routing with the core HTTP module. |
-| 🔐 **Environment_Variables** | Securing sensitive keys using `dotenv`. |
-| ⏱️ **Async_Programming** | Concepts of Blocking vs Non-Blocking execution. |
-| 🔗 **Callbacks_Promises_AsyncAwait** | Evolution of handling async code in Node.js. |
-| 🔁 **Event_Loop** | Understanding the core architecture of Node.js execution. |
-| ⚠️ **Error_Handling** | Catching errors gracefully to prevent server crashes. |
-| 🛠️ **Middleware** | Intercepting requests (Core concept for Express.js). |
+| Topic                                | Description                                               |
+| :----------------------------------- | :-------------------------------------------------------- |
+| 🌐 **Node_Server_Creation**          | Setting up a basic Node.js HTTP server.                   |
+| 📦 **NPM_and_PackageJSON**           | Understanding NPM, dependencies, and `package.json`.      |
+| 🔄 **Modules_CommonJS_vs_ESM**       | Legacy `require()` vs Modern `import/export`.             |
+| 📁 **FS_Module**                     | File System operations using modern Promises.             |
+| 🛤️ **Path_Module**                   | Handling file paths across different operating systems.   |
+| 📡 **HTTP_Module**                   | Building and routing with the core HTTP module.           |
+| 🔐 **Environment_Variables**         | Securing sensitive keys using `dotenv`.                   |
+| ⏱️ **Async_Programming**             | Concepts of Blocking vs Non-Blocking execution.           |
+| 🔗 **Callbacks_Promises_AsyncAwait** | Evolution of handling async code in Node.js.              |
+| 🔁 **Event_Loop**                    | Understanding the core architecture of Node.js execution. |
+| ⚠️ **Error_Handling**                | Catching errors gracefully to prevent server crashes.     |
+| 🛠️ **Middleware**                    | Intercepting requests (Core concept for Express.js).      |
 
 ---
 
@@ -30,7 +31,8 @@ Each folder is dedicated to a specific topic and contains:
 Below are a few key snippets demonstrating the modern implementation of core Node.js concepts covered in this repository.
 
 ### 1. Creating a Basic Node Server (`Node_Server_Creation`)
-*A simple demonstration of creating an HTTP server and handling different routes.*
+
+_A simple demonstration of creating an HTTP server and handling different routes._
 
 ```javascript
 const http = require("http");
@@ -52,7 +54,8 @@ server.listen(8000, () => {
 ```
 
 ### 2. Modern Async/Await Implementation (`Callbacks_Promises_AsyncAwait`)
-*Avoiding callback hell by using modern `async/await` syntax for asynchronous operations.*
+
+_Avoiding callback hell by using modern `async/await` syntax for asynchronous operations._
 
 ```javascript
 // A Promise-based mock API function
@@ -65,7 +68,7 @@ const fetchWithPromise = () => {
 // Modern Async/Await execution
 const getUserAsync = async () => {
   try {
-    const data = await fetchWithPromise(); 
+    const data = await fetchWithPromise();
     console.log("Async/Await Output:", data);
   } catch (err) {
     console.log("Error:", err);
@@ -76,7 +79,8 @@ getUserAsync();
 ```
 
 ### 3. File System with Promises (`FS_Module`)
-*Using the modern `fs/promises` module instead of legacy callback-based file operations.*
+
+_Using the modern `fs/promises` module instead of legacy callback-based file operations._
 
 ```javascript
 const fsNew = require("fs/promises");
@@ -85,7 +89,7 @@ const performFileOperations = async () => {
   try {
     await fsNew.writeFile("demoNew.txt", "Data written using Modern FS");
     const data = await fsNew.readFile("demoNew.txt", "utf-8");
-    
+
     console.log("Data Read:", data);
   } catch (error) {
     console.log("Error:", error.message);
@@ -96,4 +100,5 @@ performFileOperations();
 ```
 
 ---
-*Created with ❤️ for Node.js Revision.*
+
+_Created with ❤️ for Node.js Revision._
