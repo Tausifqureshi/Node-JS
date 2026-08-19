@@ -5,9 +5,8 @@
 
 function fetchWithCallback(callback) {
   setTimeout(() => {
-    callback({ id: 1, name: "Callback Data" });
-  }, 2000); // 2 second ka delay
-}  
+    }, 2000); // 2 second ka delay
+}      
 
 fetchWithCallback((data) => {
   console.log("Tarika 1 (Old Way) Output:", data);
