@@ -1,20 +1,14 @@
-// --------------------------------------------- Node.js Server Kya Hai? --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Server Kya Hota Hai?
-// Server ek program ya computer hota hai jo internet par dusre computers (clients/browsers) ki requests ko sunta hai aur unko data (response) wapas bhejta hai. 
-// Jaise jab hum google.com likhte hain, toh Google ka server hamari request sunta hai aur hume Google ka page bhej deta hai.
+// --------------------------------------------- Node.js Server Creation --------------------------------------------- //
+// ChatGPT Se Liya Hua Syntex ---> Backend server banana kyu zaruri hai?
+// Frontend (jaise React ya HTML) user ko UI dikhata hai. Lekin user jab login karta hai ya data mangta hai, toh wo ek request bhejta hai.
+// Us request ko sunne (listen) aur uska sahi data (response) wapas dene ke liye hume 24/7 chalne wala ek program chahiye, jise hum Server kehte hain.
 
-// --------------------------------------------- Node.js me Server Kaise Banta Hai? --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Server banne ka process.
-// Node.js me ek built-in module hota hai jiska naam 'http' hai. Isi ka use karke hum apna khud ka web server bana sakte hain.
-// Node.js backend me bohot famous isliye hai kyuki isme server banana bohot asaan aur fast hota hai.
+// --------------------------------------------- Basic Server Architecture --------------------------------------------- //
+// ChatGPT Se Liya Hua Syntex --->
+// 1. Request (req): Ye browser (client) ki taraf se aati hai. Isme URL, HTTP Method (GET, POST), aur user ka bheja hua data hota hai.
+// 2. Response (res): Ye Node.js server browser ko wapas bhejta hai (HTML file, JSON data, ya Error page).
+// 3. Port: Server computer ke kis "darwaze" par khada hokar sunega (listen karega). Jaise localhost:8000 me 8000 ek Port hai.
 
-// --------------------------------------------- Server Banane Ke Main Steps --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> 3 Basic Steps:
-// 1. http module ko import karna: require('http') ka use karke.
-// 2. Server Create karna: http.createServer() method ka use karke. Iske andar ek function hota hai jisme 'request' (req) aur 'response' (res) aate hain.
-// 3. Server ko kisi Port par chalana: server.listen(port_number) ka use karke. (Jaise port 3000, 8080 wagaira).
-
-// --------------------------------------------- Request (req) aur Response (res) --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> req aur res me kya hota hai?
-// - req (Request): Client ne server se kya manga hai? Uska kaunsa page (URL) manga hai? Ye sab req me hota hai.
-// - res (Response): Hum client ko wapas kya bhej rahe hain? HTML page, JSON data ya error message? Ye hum res ke zariye bhejte hain (jaise res.end("Hello")).
+// --------------------------------------------- Node.js hi kyu? --------------------------------------------- //
+// Note:
+// Node.js Event-Driven aur Non-blocking architecture pe bana hai. Iska faida ye hai ki ek basic Node.js server hazaaro requests ek sath handle kar sakta hai bina hang hue. Traditional servers (jaise purana PHP/Apache) har nayi request ke liye ek naya thread banate the jo bahut zyada RAM consume karta tha, jabki Node.js Single Thread me hi fast processing karke sab kuch sambhal leta hai.

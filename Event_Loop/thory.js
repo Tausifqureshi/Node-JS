@@ -1,13 +1,26 @@
 // --------------------------------------------- Event Loop in Node.js --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Event Loop kya hota hai?
-// Node.js inherently Single-Threaded hota hai (yani iske paas sirf ek hi main thread hoti hai jo code run karti hai). 
-// Fir bhi ye hazaro requests ko asani se handle kar leta hai bina block hue, ye "Event Loop" ki wajah se hota hai.
+// ChatGPT Se Liya Hua Syntex ---> Event Loop kya hai?
+// Node.js ek "Single-Threaded" architecture par chalta hai, yani iske paas sirf ek hi main thread (kaam karne wala hath) hota hai.
+// Event Loop wo mechanism (engine) hai jo Node.js ko non-blocking I/O (ek sath kai asynchronous kaam) karne ki taqat deta hai, bhale hi wo single-threaded ho.
 
-// --------------------------------------------- Event Loop ka Kaam --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Ye kaam kaise karta hai?
-// 1. Call Stack: Jo bhi synchronous (normal) code hota hai, wo yahan execute hota hai.
-// 2. Node APIs / Thread Pool (libuv): Jab bhi koi heavy time-taking code (jaise file read karna ya DB query) aata hai, JS Engine usko Call Stack se nikal kar background thread (libuv) me bhej deta hai. Main thread aage ka kaam karti rehti hai.
-// 3. Callback/Task Queue: Jab background wala kaam finish hota hai, toh uska function ek queue me aake lag jata hai.
-// 4. Event Loop: Iska sirf ek hi kaam hai - ye Call Stack ko check karta hai. Agar Call Stack khali hai, toh ye Callback Queue se task uthata hai aur usko run karne ke liye Call Stack me bhej deta hai.
+// --------------------------------------------- Core Components of Event Loop --------------------------------------------- //
+// ChatGPT Se Liya Hua Syntex ---> Interview me ye technical terms zaroor batayein:
 
-// Summary: Event Loop Node.js ka "dil (heart)" hai, jo ensure karta hai ki main thread kabhi freez ya block na ho.
+// 1. Call Stack:
+// Ye JavaScript ka main execution area hai. Jo bhi synchronous (normal) code hota hai, wo yahan execute hota hai. Ye LIFO (Last In, First Out) rule pe kaam karta hai.
+
+// 2. Node APIs (libuv / C++ Background Threads):
+// Jab bhi koi time-taking ya Asynchronous kaam aata hai (jaise File read karna, API call karna, setTimeout), toh Call Stack us kaam ko Node APIs (background threads) ko de deta hai. Isse main thread block nahi hota!
+
+// 3. Callback Queue (Task Queue):
+// Jab background (libuv) me kaam pura ho jata hai, toh uska result (callback function) is Queue me aakar line me lag jata hai.
+
+// 4. Microtask Queue:
+// Ye Callback Queue se zyada VVIP (High Priority) hoti hai. Promises (.then/.catch) aur 'process.nextTick' ka code seedha Microtask Queue me jata hai.
+
+// --------------------------------------------- Event Loop Ka Asli Kaam --------------------------------------------- //
+// ChatGPT Se Liya Hua Syntex ---> 
+// Event Loop hamesha check karta rehta hai ki kya "Call Stack" khali (empty) hai?
+// Agar Call Stack khali hai, toh wo pehle "Microtask Queue" se tasks uthakar chalata hai.
+// Jab Microtask Queue puri khali ho jati hai, tab wo "Callback Queue" se bache hue tasks ko Call Stack me bhejta hai.
+// Note: Microtask Queue (Promises) hamesha Callback Queue (setTimeout) se pehle execute hoti hai, iski priority zyada hoti hai.

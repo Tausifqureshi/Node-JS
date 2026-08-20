@@ -13,6 +13,7 @@ Each folder is dedicated to a specific topic and contains:
 | :----------------------------------- | :-------------------------------------------------------- |
 | 🌐 **Node_Server_Creation**          | Setting up a basic Node.js HTTP server.                   |
 | 📦 **NPM_and_PackageJSON**           | Understanding NPM, dependencies, and `package.json`.      |
+| 📥 **Require**                       | Explicit usage of `require()` for importing and exporting. |
 | 🔄 **Modules_CommonJS_vs_ESM**       | Legacy `require()` vs Modern `import/export`.             |
 | 📁 **FS_Module**                     | File System operations using modern Promises.             |
 | 🛤️ **Path_Module**                   | Handling file paths across different operating systems.   |
@@ -23,6 +24,9 @@ Each folder is dedicated to a specific topic and contains:
 | 🔁 **Event_Loop**                    | Understanding the core architecture of Node.js execution. |
 | ⚠️ **Error_Handling**                | Catching errors gracefully to prevent server crashes.     |
 | 🛠️ **Middleware**                    | Intercepting requests (Core concept for Express.js).      |
+| 🌐 **Global_Objects_and_Keywords**   | Understanding `require`, `__dirname`, `__filename`, etc.  |
+| 📢 **Events_EventEmitter**           | Event-Driven Architecture and custom events.              |
+| 🌊 **Streams_and_Buffers**           | Efficiently handling large files without crashing.        |
 
 ---
 

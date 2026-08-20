@@ -1,23 +1,23 @@
 // --------------------------------------------- Modules in Node.js --------------------------------------------- //
 // ChatGPT Se Liya Hua Syntex ---> Module kya hai?
-// Module ek isolated aur reusable code ka block hota hai jise hum dusri files me import aur use kar sakte hain. Node.js me do tarah ke module systems commonly use hote hain: CommonJS aur ES Modules.
+// Module ek isolated (alag) aur reusable code ka block hota hai jise hum dusri files me easily import kar sakte hain. Isse code manage karna aasaan ho jata hai.
 
-// --------------------------------------------- CommonJS --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> CommonJS Kya Hai?
-// CommonJS Node.js ka default aur purana module system hai.
-// 1. Export: Isme hum file ya function ko export karne ke liye 'module.exports' use karte hain.
-// 2. Import: Dusri file me use karne ke liye hum 'require()' function ka use karte hain.
-// 3. Execution: Ye modules synchronously load hote hain, isliye backend me zyada prefer kiye jate the.
+// --------------------------------------------- Tarika 1 (Old Tarika - CommonJS) --------------------------------------------- //
+// - Node.js me ye shuru se default module system raha hai.
+// - Isme import ke liye `require()` aur export ke liye `module.exports` use hota hai.
+// Note: CommonJS modules **Synchronously** load hote hain. Iska matlab hai ki jab tak 'require' wali file load nahi ho jati, aage ka code nahi chalega. Ye backend me theek hai kyuki files usi computer ki hard-drive par hoti hain.
 
-// --------------------------------------------- ES Modules (ESM) --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> ES Modules (ESM) Kya Hai?
-// Ye modern JavaScript (ES6) ka standard module system hai (jo React aur frontend me bhi commonly use hota hai).
-// 1. Export: Isme data export karne ke liye 'export' aur 'export default' ka use hota hai.
-// 2. Import: Dusri file me data laane ke liye hum 'import ... from ...' ka use karte hain.
-// 3. Node.js me use: Isko Node me use karne ke liye package.json me "type": "module" add karna padta hai, ya phir .mjs extension use karna padta hai.
+// --------------------------------------------- Tarika 2 (New Tarika - ES Modules / ESM) --------------------------------------------- //
+// - Ye naya aur modern standard hai jo React.js jaisi frontend libraries me bhi use hota hai.
+// - Isme import ke liye `import` aur export ke liye `export` keyword use hota hai.
+// - Ise enable karne ke liye 'package.json' me `"type": "module"` likhna padta hai.
+// Note: ES Modules **Asynchronously** load hote hain. Iska matlab inka performance better hota hai aur ye modern JavaScript syntax ko strictly follow karte hain.
 
-// --------------------------------------------- CommonJS vs ESM Differences --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Key Differences.
-// 1. Syntax: CommonJS me 'require / module.exports' aur ESM me 'import / export'.
-// 2. Loading: CommonJS synchronously load karta hai aur ESM asynchronously load karta hai.
-// 3. Environment: CommonJS strictly backend/Node ke liye tha, jabki ESM frontend (browser) aur backend dono me kaam karta hai.
+// --------------------------------------------- QUICK REVISION --------------------------------------------- //
+// Old Way (CommonJS):
+// const fs = require("fs"); 
+// module.exports = { myFunction };
+
+// New Way (ES Modules):
+// import fs from "fs";
+// export const myFunction = () => {};

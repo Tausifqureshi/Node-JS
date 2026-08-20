@@ -1,23 +1,19 @@
-// --------------------------------------------- Callbacks, Promises, aur Async/Await --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Node.js me Asynchronous code handle karne ke tarike.
+// --------------------------------------------- Handling Asynchronous Code --------------------------------------------- //
+// ChatGPT Se Liya Hua Syntex ---> Node.js me Asynchronous code (jo background me time leta hai) ko handle karne ke 3 main tarike hain.
 
-// --------------------------------------------- 1. Callbacks --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Callbacks kya the?
-// Ye purana tarika tha. Ek function jo kisi doosre function me as a parameter pass kiya jata hai. 
-// Jab asyn task pura hota hai, toh Node ye function chala deta tha.
-// Problem: Isme "Callback Hell" ban jata tha (ek ke andar dusra callback) jisse code ko padhna aur error handle karna bahut mushkil ho jata tha.
+// --------------------------------------------- Tarika 1: Callbacks (Old Way) --------------------------------------------- //
+// - Ye sabse purana tarika tha. Isme hum ek function pass karte hain jo background task pura hone par execute hota tha.
+// - Problem (Callback Hell): Agar ek task ke andar dusra, aur dusre ke andar teesra task karna ho, toh code ka structure "Pyramid of Doom" ban jata tha. Isko debug aur padhna bahut mushkil hota tha.
 
-// --------------------------------------------- 2. Promises --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Promises ne problem kaise solve ki?
-// Promise ek object hota hai jo future me aane wali value ko represent karta hai. Iski 3 states hoti hain:
-// - Pending: Kaam chal raha hai.
-// - Fulfilled (Resolved): Kaam successfully ho gaya.
-// - Rejected: Kaam me koi error aa gaya.
-// Isme hum .then() ka use karte hain success ke liye aur .catch() ka use karte hain error ke liye. Isse callback hell wali problem solve hui, code clean hua.
+// --------------------------------------------- Tarika 2: Promises (Better Way) --------------------------------------------- //
+// - Promise ek aisi object hai jo kisi asynchronous operation ke "future" me pura hone (ya fail hone) ki guarantee deti hai.
+// - Iski 3 states hoti hain:
+//   1. Pending: Kaam background me chal raha hai.
+//   2. Fulfilled (Resolved): Kaam successfully ho gaya.
+//   3. Rejected: Kaam me koi error aa gaya.
+// - Isme hum success ke liye `.then()` aur error ke liye `.catch()` use karte hain. Isse Callback Hell wali problem kafi hadd tak solve hui.
 
-// --------------------------------------------- 3. async/await --------------------------------------------- //
-// ChatGPT Se Liya Hua Syntex ---> Ye kya hai aur kyu best hai?
-// Ye Promises ke upar ek "syntactic sugar" hai. Isne asynchronous code ko synchronous code jaisa likhne ka asaan tarika diya.
-// - 'async' keyword function ke aage lagane se wo function Promise return karta hai.
-// - 'await' us Promise ka result aane tak line ko wahin rok deta hai (without blocking the whole Node process).
-// Ye sabse modern aur clean tarika hai, aur errors pakadne ke liye hum 'try...catch' block ka use karte hain.
+// --------------------------------------------- Tarika 3: Async/Await (Modern Best Practice) --------------------------------------------- //
+// - Ye Promises ke upar ek "Syntactic Sugar" hai. Matlab background me chal toh Promises hi rahe hain, par likhne ka style ekdum saaf aur Synchronous (seedha) lagta hai.
+// Note: Function ke aage 'async' lagane se wo hamesha Promise return karta hai. 'await' lagane se us line par tab tak aage ka code execution "pause" (ruk) jata hai jab tak Microtask Queue se promise ka result na aa jaye. (Yahan dhyaan rahe, 'await' sirf us function ko pause karta hai, pure Node.js server ko block nahi karta!)
+// - Errors pakadne ke liye isme 'try...catch' block ka use kiya jata hai. Interview me ye tarika batana sabse best hota hai.
