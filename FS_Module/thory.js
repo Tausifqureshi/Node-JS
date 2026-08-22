@@ -7,7 +7,7 @@
 
 // 1. Synchronous (Blocking - Not Recommended): 
 // Jaise fs.readFileSync(). Ye code agle line pe tab tak nahi jayega jab tak file read na ho jaye. Ye Node.js ke main thread ko block karta hai, isliye ise production me kabhi use nahi karna chahiye.
-
+ 
 // 2. Callbacks (Asynchronous - Purana Tarika):
 // Jaise fs.readFile(path, callback). Ye async hai aur main thread block nahi karta, par isme "Callback Hell" (functions ki gahri nesting) banne ka issue rehta hai. Ye legacy (old) tarika hai.
 
