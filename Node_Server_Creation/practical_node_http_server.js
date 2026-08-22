@@ -1,0 +1,57 @@
+// ========================================= 1. Normal / Basic HTTP Server ======================================= //
+// Ye Node.js ka sabse basic aur normal server hai (Bina kisi extra API ya logic ke).
+// Iska maqsad sirf ye sikhana hai ki ek server actually me banta kaise hai.
+
+const http = require('http');
+
+const runBasicHttpServer = () => {
+    console.log("=== Normal HTTP Server ===\n");
+
+    const server = http.createServer((req, res) => {
+        // Headers dena achhi practice hai (Browser ko batane ke liye ki text bhej rahe hain)
+        res.writeHead(200, {
+            "Content-Type": "text/plain"
+        });
+
+        res.end("Hello Bhai! Server chal raha hai.");
+    });
+
+    const PORT = 3007;
+    server.listen(PORT, () => {
+        console.log(`🚀 Normal HTTP Server chal raha hai! 👉 http://localhost:${PORT}`);
+    });
+};
+// runBasicHttpServer(); // Uncomment to run
+
+
+// ========================================= 2. Advanced Core HTTP Server Practical ======================================= //
+// Ye thoda advanced server hai jo JSON API response deta hai. (Asli duniya me hum Express ka zyada use karte hain)
+
+const runAdvancedNodeHttpServer = () => {
+    console.log("=== Advanced Core HTTP Server Ka Asli Use ===\n");
+
+    const server = http.createServer((req, res) => {
+        // CORS headers zaroori hote hain agar frontend (React) aur backend alag-alag port pe hon
+        res.setHeader('Access-Control-Allow-Origin', '*');
+
+        if (req.url === '/' && req.method === 'GET') {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({
+                server: "Node.js Core HTTP",
+                status: "Running Successfully",
+                developer: "Tausif"
+            }));
+        } else {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end("404 - Not Found");
+        }
+    });
+
+    const PORT = 3005;
+    server.listen(PORT, () => {
+        console.log(`🚀 Advanced Core HTTP Server is running!`);
+        console.log(`👉 API check karein: http://localhost:${PORT}`);
+    });
+};
+
+runAdvancedNodeHttpServer(); // Yahi by default chalega
