@@ -34,11 +34,11 @@ const runLocalPractical = () => {
     // ========================================================================================= //
     // TARIKA 3: New Style (ES Modules) - React Jaisa (Modern Tarika)
     // ========================================================================================= //
-    // Note: Ye tarika tabhi chalega jab package.json me "type": "module" likha ho.
-    // Abhi ke liye ye bas sikhne ke liye commented hai:
+    // 1. Note: Ye tarika tabhi chalega jab package.json me "type": "module" likha ho.
+    // 2. Abhi ke liye ye bas sikhne ke liye commented hai:
     
     /*
-    // Yaha NEW TARIKA hai (ES Modules, DESTRUCTURING ke sath)
+    // 3. Yaha NEW TARIKA hai (ES Modules, DESTRUCTURING ke sath)
     import { add, subtract } from './calculator.js';
     
     console.log("\n--- 3. New Style (ES Modules) ---");
