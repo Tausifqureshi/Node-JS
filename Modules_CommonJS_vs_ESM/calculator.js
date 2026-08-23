@@ -19,10 +19,26 @@ const divide = (a, b) => {
     return a / b;
 };
 
-// Exporting all functions (CommonJS Tarika)
+// ========================================================================================= //
+// TARIKA 1: Old Style (CommonJS) - Pura Dabba (Object) Export Karna
+// ========================================================================================= //
+// Yaha OLD TARIKA hai (By default Node.js yahi samajhta hai)
 module.exports = {
     add,
     subtract,
     multiply,
     divide
 };
+
+// ========================================================================================= //
+// TARIKA 2: New Style (ES Modules) - React Jaisa (Modern Tarika)
+// ========================================================================================= //
+// Note: Ye tarika tabhi chalega jab package.json me "type": "module" likha ho.
+// Agar naya tarika use karna ho toh aise likhte hain (Har function ke aage 'export'):
+
+/*
+export const add = (a, b) => { return a + b; };
+export const subtract = (a, b) => { return a - b; };
+export const multiply = (a, b) => { return a * b; };
+export const divide = (a, b) => { return a / b; };
+*/
