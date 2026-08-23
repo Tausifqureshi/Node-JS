@@ -11,7 +11,9 @@ const runLocalPractical = () => {
     // ========================================================================================= //
     // TARIKA 1: Old Style (CommonJS) - Pura Dabba (Object) Import Karna
     // ========================================================================================= //
+    // Yaha OLD TARIKA hai (Bina Destructuring ke, pura dabba import ho raha hai)
     const myCalculator = require('./calculator.js');
+    
     console.log("--- 1. Pura Dabba (Object) Import ---");
     console.log("Addition: ", myCalculator.add(num1, num2));
     console.log("Subtraction: ", myCalculator.subtract(num1, num2));
@@ -20,8 +22,9 @@ const runLocalPractical = () => {
     // ========================================================================================= //
     // TARIKA 2: Old Style (CommonJS) - Destructuring (Sirf zaroorat ka function bahar nikalna)
     // ========================================================================================= //
-    // Is tarike se bhi import kar sakte hain (Destructuring)
+    // Yaha OLD TARIKA hai (Par DESTRUCTURING ke sath)
     const { multiply, divide } = require('./calculator.js');
+    
     console.log("\n--- 2. Destructuring Se Import ---");
     // Ab 'myCalculator.multiply' likhne ki zaroorat nahi, seedha 'multiply' use kar sakte hain
     console.log("Multiplication: ", multiply(num1, num2));
@@ -35,7 +38,7 @@ const runLocalPractical = () => {
     // Abhi ke liye ye bas sikhne ke liye commented hai:
     
     /*
-    // Naye tarike me bhi ye curly brackets {} lagana Destructuring hi kahlata hai
+    // Yaha NEW TARIKA hai (ES Modules, DESTRUCTURING ke sath)
     import { add, subtract } from './calculator.js';
     
     console.log("\n--- 3. New Style (ES Modules) ---");
