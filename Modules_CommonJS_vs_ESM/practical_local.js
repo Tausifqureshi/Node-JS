@@ -35,6 +35,7 @@ const runLocalPractical = () => {
     // Abhi ke liye ye bas sikhne ke liye commented hai:
     
     /*
+    // Naye tarike me bhi ye curly brackets {} lagana Destructuring hi kahlata hai
     import { add, subtract } from './calculator.js';
     
     console.log("\n--- 3. New Style (ES Modules) ---");
