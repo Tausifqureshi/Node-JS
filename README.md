@@ -13,6 +13,7 @@ Each folder is dedicated to a specific topic and contains:
 | Topic                                | Description                                               |
 | :----------------------------------- | :-------------------------------------------------------- |
 | 🟢 **Introduction**                  | Basics of Node.js, V8 Engine, and execution flow.         |
+| 🏗️ **Nodejs_Architecture**           | Event Loop, Thread Pool, and how Node.js works internally.|
 | 🌐 **Node_Server_Creation**          | Setting up HTTP & modern Express.js servers.              |
 | 📦 **NPM_and_PackageJSON**           | Understanding NPM, dependencies, and `package.json`.      |
 | 📥 **Require**                       | Explicit usage of `require()` for imports.                |
