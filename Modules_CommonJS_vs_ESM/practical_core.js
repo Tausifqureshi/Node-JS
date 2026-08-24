@@ -17,13 +17,15 @@ const http = require('http');           // HTTP module import kiya
 const runCorePractical = () => {
     console.log("=== Core Module Practical Shuru Ho Raha Hai ===\n");
 
-    // ================== 1. OS, PATH, aur FS ================== //
+    // ================== 1. OS, PATH, aur FS = ================== //'
+     // . OS module se computer ki jankari lena
     console.log("--- 1. OS, PATH, aur FS Module ka Demo ---");
     const userInfo = os.userInfo();
-    const systemMemory = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
+    const systemMemory = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2); // GB me convert kiya
     const reportData = `User: ${userInfo.username} | RAM: ${systemMemory} GB`;
     
     // 'path' module se location banai, aur 'fs' se wahan file likh di
+    //  'path' module ka kaam: Ek sahi location (address) banana jahan file save hogi
     const reportFilePath = path.join(__dirname, 'system_report.txt');
     fs.writeFileSync(reportFilePath, reportData);
     console.log(`✅ System report save ho gayi: ${reportFilePath}\n`);
