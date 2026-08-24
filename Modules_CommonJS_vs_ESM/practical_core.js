@@ -1,6 +1,6 @@
 // ========================================= Core Modules Practical ======================================= //
 // Node.js me Core Modules (jaise 'fs', 'path', 'os', 'http') pehle se maujood hote hain.
-// Hum yahan 'os' aur 'fs' module ka use karke apne computer ki jankari nikalenge aur usko ek file me save karenge.
+// Hum yahan 'os', 'path', aur 'fs' module ka use karke apne computer ki jankari nikalenge aur usko ek file me save karenge.
 
 const os = require('os');
 const fs = require('fs');
@@ -26,7 +26,7 @@ const runCorePractical = () => {
     console.log("Ye data tayar hua hai:");
     console.log(reportData);
 
-    // 2. fs aur path module se is data ko file me likhna
+    // 2. 'path' module se hum sahi location banayenge, aur 'fs' module se data ko file me likhenge
     const reportFilePath = path.join(__dirname, 'system_report.txt');
     
     fs.writeFileSync(reportFilePath, reportData);

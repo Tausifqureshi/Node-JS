@@ -32,6 +32,7 @@ const coreModuleExample = () => {
 
 // ========================================= 2. Local Modules ======================================= //
 // ChatGPT Se Liya Hua Syntex ---> Ye wo files hain jo hum khud apne project me banate hain (jaise app.js, user.js, math.js).
+
 // Inhe apne hi project ki doosri files me use karne ke liye export aur import karna padta hai.
 
 const localModuleExample = () => {
