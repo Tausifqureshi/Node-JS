@@ -2,6 +2,16 @@
 
 Welcome to the **Node.js Complete Revision Repository**! This project is structured to help developers learn and revise core Node.js concepts from scratch up to advanced backend architectures. It focuses on modern industry standards, clearly comparing legacy approaches with modern ES6+ practices.
 
+---
+
+## 🏗️ Node.js Architecture & Working Flow
+
+![Node.js Architecture](./Nodejs_Architecture/image/nodejs_working_image.png)
+
+*Node.js is an asynchronous, event-driven JavaScript runtime. It uses a single-threaded Event Loop to handle non-blocking operations and delegates heavy tasks to a background Thread Pool (Libuv).*
+
+---
+
 ## 📂 Folder Structure & Topics Covered
 
 Each folder is dedicated to a specific topic and contains:
@@ -14,6 +24,7 @@ Each folder is dedicated to a specific topic and contains:
 | Topic                              | Description                                             |
 | :--------------------------------- | :------------------------------------------------------ |
 | 🟢 **Introduction**                | Basics of Node.js, V8 Engine, and execution flow.       |
+| 🏗️ **Nodejs_Architecture**         | Event Loop, Thread Pool, and Blocking vs Non-Blocking.  |
 | 🌐 **Node_Server_Creation**        | Setting up HTTP & modern Express.js servers.            |
 | 📦 **NPM_and_PackageJSON**         | Understanding NPM, dependencies, and `package.json`.    |
 | 📥 **Require**                     | Explicit usage of `require()` for imports.              |
@@ -56,27 +67,4 @@ Each folder is dedicated to a specific topic and contains:
 5. Run the specific practical file (e.g., `node practical_server.js`).
 
 ---
-
 _Created with ❤️ for mastering Node.js._
-NonBlock -->|Processes immediately| IOPolling[I/O Polling]
-
-    Loop -->|If Heavy Task| Block[Blocking Operations <br> e.g. Database, FS Read]
-    Block -->|Send to Background| ThreadPool[Thread Pool / Libuv]
-    ThreadPool -->|Worker Threads execute| ExtOp[External Operations]
-    ExtOp -->|Callback when done| Loop
-
-```
-
----
-
-## 📸 How to use this repository?
-
-1. Clone the repository.
-2. Run `npm install` (to install dependencies like `express` or `bcrypt`).
-3. Navigate to any folder (e.g., `cd MVC_Architecture`).
-4. Read the `thory.js` file for theoretical understanding.
-5. Run the specific practical file (e.g., `node practical_server.js`).
-
----
-_Created with ❤️ for mastering Node.js._
-```
