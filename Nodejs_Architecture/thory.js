@@ -2,19 +2,8 @@
 ======================================================================================
                           NODE.JS ARCHITECTURE & WORKING
 ======================================================================================
-(Note: Diagram dekhne ke liye is folder me 'Architecture_Diagram.md' file open karein, 
-GitHub usko ekdum perfect Visual Image (Diagram) me convert kar dega!)
-
---- HOW IT WORKS (Line-by-Line Explanation) ---
-
-1. Requests:
-   Jab bhi koi user website par aata hai, wo Node.js server ko ek 'Request' bhejta hai. 
-
-2. Event Queue:
-   Saari aane wali requests ek line (Queue) me lag jati hain. 
-
-3. Event Loop:
-   Ye Node.js ka 'Dil' hai. Ye Queue se request uthata hai aur process karta hai.
+(Note: Node.js Architecture ka Asli Diagram (Visual Image) aur uski working 
+ab bahar main 'README.md' file me laga di gayi hai taaki sabko samne dikhe!)
 
 ======================================================================================
                           BLOCKING VS NON-BLOCKING

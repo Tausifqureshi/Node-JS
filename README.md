@@ -45,6 +45,26 @@ Each folder is dedicated to a specific topic and contains:
 
 ---
 
+## 🏗️ Node.js Architecture & Working
+
+Node.js is an asynchronous, event-driven JavaScript runtime. Here is how it handles Blocking and Non-Blocking requests:
+
+```mermaid
+graph TD
+    Client((Clients)) -->|Send Requests| Queue[Event Queue]
+    Queue <-->|Pulls Request| Loop{Event Loop}
+    
+    Loop -->|If Easy Task| NonBlock[Non-Blocking Operations <br> e.g. Math, API Response]
+    NonBlock -->|Processes immediately| IOPolling[I/O Polling]
+    
+    Loop -->|If Heavy Task| Block[Blocking Operations <br> e.g. Database, FS Read]
+    Block -->|Send to Background| ThreadPool[Thread Pool / Libuv]
+    ThreadPool -->|Worker Threads execute| ExtOp[External Operations]
+    ExtOp -->|Callback when done| Loop
+```
+
+---
+
 ## 📸 How to use this repository?
 
 1. Clone the repository.
