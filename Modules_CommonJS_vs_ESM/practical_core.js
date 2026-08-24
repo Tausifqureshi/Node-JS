@@ -26,9 +26,10 @@ const runCorePractical = () => {
     console.log("Ye data tayar hua hai:");
     console.log(reportData);
 
-    // 2. 'path' module se hum sahi location banayenge, aur 'fs' module se data ko file me likhenge
+    // 2. 'path' module ka kaam: Ek sahi location (address) banana jahan file save hogi
     const reportFilePath = path.join(__dirname, 'system_report.txt');
     
+    // 3. 'fs' module ka kaam: Us location par ek nayi file banakar usme data (report) likhna
     fs.writeFileSync(reportFilePath, reportData);
     console.log(`✅ Success: Report file yahan save ho gayi hai -> ${reportFilePath}`);
 };
