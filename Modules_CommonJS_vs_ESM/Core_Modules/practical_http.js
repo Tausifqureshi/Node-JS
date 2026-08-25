@@ -8,6 +8,9 @@ const server = http.createServer((request, response) => {
     if (request.url === '/') {
         response.writeHead(200, {'Content-Type': 'text/plain'});
         response.write("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
+        
+        // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
+        // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
         response.end();
     } else if (request.url === '/api/user') {
         // Javascript Object (JSON) ko response me bhejna
