@@ -9,6 +9,18 @@ const server = http.createServer((request, response) => {
         response.writeHead(200, {'Content-Type': 'text/plain'});
         response.write("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
         response.end();
+    } else if (request.url === '/api/user') {
+        // Javascript Object (JSON) ko response me bhejna
+        const userObj = {
+            name: "Tausif Qureshi",
+            role: "Developer",
+            skill: "Node.js"
+        };
+        // Header me Content-Type ko 'application/json' dena zaroori hai
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai
+        response.write(JSON.stringify(userObj));
+        response.end();
     } else {
         // Agar koi galat URL par jaye (jaise /xyz ya /about)
         response.writeHead(404, {'Content-Type': 'text/plain'});
@@ -31,5 +43,6 @@ server.listen(3000, () => {
     console.log("✅ HTTP Server chalu ho gaya hai!");
     console.log("👉 Sahi page ke liye browser me kholen: http://localhost:3000");
     console.log("👉 Error (404) test karne ke liye kholen: http://localhost:3000/kuchbhi");
+    console.log("👉 JSON Object test karne ke liye kholen: http://localhost:3000/api/user");
     console.log("\n⚠️ Note: Server ko band karne ke liye terminal me 'Ctrl + C' dabayein.");
 });
