@@ -7,11 +7,9 @@ const server = http.createServer((request, response) => {
     // Basic Routing aur Error (404) Handle karna
     if (request.url === '/') {
         response.writeHead(200, {'Content-Type': 'text/plain'});
-        response.write("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
-        
-        // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
-        // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
-        response.end();
+        // response.end() me hum direct data bhi pass kar sakte hain. Ye ek shortcut hai.
+        // Ye pehle data browser ko bhejta hai, aur fir turant connection close kar deta hai.
+        response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
     } else if (request.url === '/api/user') {
         // Javascript Object (JSON) ko response me bhejna
         const userObj = {
@@ -21,14 +19,14 @@ const server = http.createServer((request, response) => {
         };
         // Header me Content-Type ko 'application/json' dena zaroori hai
         response.writeHead(200, {'Content-Type': 'application/json'});
-        // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai
-        response.write(JSON.stringify(userObj));
-        response.end();
+        // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai. 
+        // Yahan bhi hum .write() ki jagah direct .end() me data bhej rahe hain.
+        response.end(JSON.stringify(userObj));
     } else {
         // Agar koi galat URL par jaye (jaise /xyz ya /about)
         response.writeHead(404, {'Content-Type': 'text/plain'});
-        response.write("ERROR 404: Ye page exist nahi karta bhai!");
-        response.end();
+        // Yahan bhi direct response.end() ka shortcut use kiya hai
+        response.end("ERROR 404: Ye page exist nahi karta bhai!");
     }
 });
 
