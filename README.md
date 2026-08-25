@@ -24,6 +24,7 @@ Each folder is dedicated to a specific topic and contains:
 | Topic                              | Description                                             |
 | :--------------------------------- | :------------------------------------------------------ |
 | 🟢 **Introduction**                | Basics of Node.js, V8 Engine, and execution flow.       |
+| 🧩 **Core_Modules**                | Introduction to basic built-in modules (os, fs, path).  |
 | 🏗️ **Nodejs_Architecture**         | Event Loop, Thread Pool, and Blocking vs Non-Blocking.  |
 | 🌐 **Node_Server_Creation**        | Setting up HTTP & modern Express.js servers.            |
 | 📦 **NPM_and_PackageJSON**         | Understanding NPM, dependencies, and `package.json`.    |
