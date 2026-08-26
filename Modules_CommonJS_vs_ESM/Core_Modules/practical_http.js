@@ -7,12 +7,17 @@ console.log("=== HTTP Module Demo (3 Alag Servers) ===\n");
 // =======================================================
 // Ye server sabse basic hai jisme sirf plain text bheja ja raha hai.
 const basicServer = http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    
-    // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
-    // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
-    // Isme hum direct data bhi pass kar sakte hain, ye ek shortcut hai.
-    response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
+    if (request.url === '/') {
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        
+        // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
+        // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
+        // Isme hum direct data bhi pass kar sakte hain, ye ek shortcut hai.
+        response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
+    } else {
+        response.writeHead(404, {'Content-Type': 'text/plain'});
+        response.end("404 Error: Page nahi mila!");
+    }
 });
 
 // Server me agar koi internal error aaye (jaise port pehle se busy ho) toh usko pakadna
@@ -34,17 +39,22 @@ basicServer.listen(3000, () => {
 // =======================================================
 // Ye dikhata hai ki server banakar usme ek Object (JSON) kaise bhejte hain.
 const jsonServer = http.createServer((request, response) => {
-    const userObj = {
-        name: "Tausif Qureshi",
-        role: "Developer",
-        skill: "Node.js"
-    };
-    
-    // Header me Content-Type ko 'application/json' dena zaroori hai
-    response.writeHead(200, {'Content-Type': 'application/json'});
-    
-    // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai bhejte waqt.
-    response.end(JSON.stringify(userObj));
+    if (request.url === '/api/user') {
+        const userObj = {
+            name: "Tausif Qureshi",
+            role: "Developer",
+            skill: "Node.js"
+        };
+        
+        // Header me Content-Type ko 'application/json' dena zaroori hai
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        
+        // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai bhejte waqt.
+        response.end(JSON.stringify(userObj));
+    } else {
+        response.writeHead(404, {'Content-Type': 'text/plain'});
+        response.end("404 Error: Yahan sirf /api/user chalta hai!");
+    }
 });
 
 jsonServer.on('error', (err) => {
@@ -61,20 +71,25 @@ jsonServer.listen(3001, () => {
 // =======================================================
 // Ye dikhata hai ki server banakar ek HTML webpage kaise bhejte hain.
 const htmlServer = http.createServer((request, response) => {
-    // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    
-    // HTML structure directly response me bhej sakte hain
-    const htmlContent = `
-        <html>
-            <head><title>My Node Server</title></head>
-            <body style="font-family: Arial; text-align: center; margin-top: 50px;">
-                <h1 style="color: blue;">Welcome to Node.js HTML Page! 🚀</h1>
-                <p>Ye HTML page alag server se aa raha hai.</p>
-            </body>
-        </html>
-    `;
-    response.end(htmlContent);
+    if (request.url === '/html') {
+        // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        
+        // HTML structure directly response me bhej sakte hain
+        const htmlContent = `
+            <html>
+                <head><title>My Node Server</title></head>
+                <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+                    <h1 style="color: blue;">Welcome to Node.js HTML Page! 🚀</h1>
+                    <p>Ye HTML page alag server se aa raha hai.</p>
+                </body>
+            </html>
+        `;
+        response.end(htmlContent);
+    } else {
+        response.writeHead(404, {'Content-Type': 'text/plain'});
+        response.end("404 Error: Yahan sirf /html chalta hai!");
+    }
 });
 
 htmlServer.on('error', (err) => {
