@@ -36,7 +36,16 @@ aboutApp.get('/about', (req, res) => {
     // req ka use: Agar koi browser me "http://localhost:3001/about" type karega, toh req.url "/about" hoga
     console.log("👉 [Port 3001] User ne ye rasta manga:", req.url);
     
-    res.send("<h1>About Us Page</h1><p>Hum Tausif bhai ke sath Node.js seekh rahe hain.</p>");
+    // Yahan hum wo Data (JSON) bana rahe hain jo Frontend ko bhejenge
+    const aboutData = {
+        company: "Tausif Code Labs",
+        founded: 2026,
+        mission: "Node.js aur Express seekhna",
+        teamSize: 10
+    };
+    
+    // res.json() ka use karke is data ko seedha Frontend bhej diya
+    res.json(aboutData);
 });
 
 // Agar koi aur raste par jaye (404 Error)
