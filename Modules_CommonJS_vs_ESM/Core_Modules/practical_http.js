@@ -5,12 +5,20 @@ console.log("=== HTTP Module Demo ===\n");
 // 1. Ek dum basic web server banana
 const server = http.createServer((request, response) => {
     // Basic Routing aur Error (404) Handle karna
+    // ==========================================
+    // 1. Basic Text Route
+    // ==========================================
     if (request.url === '/') {
         response.writeHead(200, {'Content-Type': 'text/plain'});
         // response.end() me hum direct data bhi pass kar sakte hain. Ye ek shortcut hai.
         // Ye pehle data browser ko bhejta hai, aur fir turant connection close kar deta hai.
         response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
-    } else if (request.url === '/api/user') {
+    } 
+    
+    // ==========================================
+    // 2. JSON Object Send Route
+    // ==========================================
+    else if (request.url === '/api/user') {
         // Javascript Object (JSON) ko response me bhejna
         const userObj = {
             name: "Tausif Qureshi",
@@ -22,7 +30,12 @@ const server = http.createServer((request, response) => {
         // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai. 
         // Yahan bhi hum .write() ki jagah direct .end() me data bhej rahe hain.
         response.end(JSON.stringify(userObj));
-    } else if (request.url === '/html') {
+    } 
+    
+    // ==========================================
+    // 3. HTML Code Send Route
+    // ==========================================
+    else if (request.url === '/html') {
         // HTML Content bhejna
         // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
         response.writeHead(200, {'Content-Type': 'text/html'});
@@ -38,7 +51,12 @@ const server = http.createServer((request, response) => {
             </html>
         `;
         response.end(htmlContent);
-    } else {
+    } 
+    
+    // ==========================================
+    // 4. Fallback / 404 Route
+    // ==========================================
+    else {
         // Agar koi galat URL par jaye (jaise /xyz ya /about)
         response.writeHead(404, {'Content-Type': 'text/plain'});
         // Yahan bhi direct response.end() ka shortcut use kiya hai
