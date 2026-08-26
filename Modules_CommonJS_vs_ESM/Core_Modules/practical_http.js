@@ -1,70 +1,65 @@
 const http = require('http');           
 
-console.log("=== HTTP Module Demo ===\n");
+console.log("=== HTTP Module Demo (3 Alag Servers) ===\n");
 
-// 1. Ek dum basic web server banana
-const server = http.createServer((request, response) => {
+// =======================================================
+// 1. BASIC SERVER (Sirf Text Bhejna) - Port 3000
+// =======================================================
+// Ye server sabse basic hai jisme sirf plain text bheja ja raha hai.
+const basicServer = http.createServer((request, response) => {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
     
-    // ==========================================
-    // 1. Basic Text Route
-    // ==========================================
-    if (request.url === '/') {
-        response.writeHead(200, {'Content-Type': 'text/plain'});
-        
-        // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
-        // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
-        // Isme hum direct data bhi pass kar sakte hain, ye ek shortcut hai.
-        response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
-    } 
-    
-    // ==========================================
-    // 2. JSON Object Send Route
-    // ==========================================
-    else if (request.url === '/api/user') {
-        const userObj = {
-            name: "Tausif Qureshi",
-            role: "Developer",
-            skill: "Node.js"
-        };
-        // Header me Content-Type ko 'application/json' dena zaroori hai
-        response.writeHead(200, {'Content-Type': 'application/json'});
-        
-        // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai bhejte waqt.
-        // Yahan bhi hum direct .end() me data bhej rahe hain.
-        response.end(JSON.stringify(userObj));
-    } 
-    
-    // ==========================================
-    // 3. Fallback / 404 Route (Agar koi galat URL par jaye)
-    // ==========================================
-    else {
-        response.writeHead(404, {'Content-Type': 'text/plain'});
-        response.end("ERROR 404: Ye page exist nahi karta bhai!");
-    }
+    // response.end() browser ko signal deta hai ki "Mera kaam khatam, ab connection close kar do".
+    // Varna browser ko lagega aur data aane wala hai, aur wo hamesha loading (gol-gol) karta rahega!
+    // Isme hum direct data bhi pass kar sakte hain, ye ek shortcut hai.
+    response.end("Hello Tausif Bhai! Aapka Basic HTTP Server chal gaya hai.");
 });
 
-// 2. Server me agar koi internal error aaye (jaise port 3000 pehle se busy ho) toh usko pakadna (handle karna)
-server.on('error', (err) => {
+// Server me agar koi internal error aaye (jaise port pehle se busy ho) toh usko pakadna
+basicServer.on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
-        console.log("❌ ERROR: Port 3000 pehle se kisi aur kaam me busy hai. Kripya dusra port try karein ya purana server band karein!");
+        console.log("❌ ERROR: Port 3000 pehle se busy hai. Purana server band karein!");
     } else {
         console.log("❌ SERVER ERROR:", err.message);
     }
 });
 
-// 3. Server ko ek port (jaise 3000) par chalu (listen) karna
-server.listen(3000, () => {
-    console.log("✅ HTTP Server chalu ho gaya hai!");
-    console.log("👉 Sahi page ke liye browser me kholen: http://localhost:3000");
-    console.log("👉 Error (404) test karne ke liye kholen: http://localhost:3000/kuchbhi");
-    console.log("👉 JSON Object test karne ke liye kholen: http://localhost:3000/api/user");
-    console.log("\n⚠️ Note: Sabhi servers ko band karne ke liye terminal me 'Ctrl + C' dabayein.");
+basicServer.listen(3000, () => {
+    console.log("✅ 1. Basic Text Server chalu: http://localhost:3000");
 });
 
 
 // =======================================================
-// HTML KA KAAM BHEJNE KA TARIKA (Alag Server Par)
+// 2. JSON OBJECT BHEJNE WALA SERVER - Port 3001
 // =======================================================
+// Ye dikhata hai ki server banakar usme ek Object (JSON) kaise bhejte hain.
+const jsonServer = http.createServer((request, response) => {
+    const userObj = {
+        name: "Tausif Qureshi",
+        role: "Developer",
+        skill: "Node.js"
+    };
+    
+    // Header me Content-Type ko 'application/json' dena zaroori hai
+    response.writeHead(200, {'Content-Type': 'application/json'});
+    
+    // Object ko seedha nahi bhej sakte, JSON String me badalna padta hai bhejte waqt.
+    response.end(JSON.stringify(userObj));
+});
+
+jsonServer.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3001 pehle se busy hai!");
+});
+
+jsonServer.listen(3001, () => {
+    console.log("✅ 2. JSON Object Server chalu: http://localhost:3001");
+});
+
+
+// =======================================================
+// 3. HTML KA KAAM BHEJNE KA TARIKA - Port 3002
+// =======================================================
+// Ye dikhata hai ki server banakar ek HTML webpage kaise bhejte hain.
 const htmlServer = http.createServer((request, response) => {
     // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
     response.writeHead(200, {'Content-Type': 'text/html'});
@@ -83,11 +78,10 @@ const htmlServer = http.createServer((request, response) => {
 });
 
 htmlServer.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-        console.log("❌ ERROR: Port 3001 pehle se busy hai!");
-    }
+    if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3002 pehle se busy hai!");
 });
 
-htmlServer.listen(3001, () => {
-    console.log("\n✅ HTML Server alag se chalu ho gaya hai: http://localhost:3001");
+htmlServer.listen(3002, () => {
+    console.log("✅ 3. HTML Server chalu ho gaya hai: http://localhost:3002");
+    console.log("\n⚠️ Note: Sabhi servers ko ek sath band karne ke liye terminal me 'Ctrl + C' dabayein.");
 });
