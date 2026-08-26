@@ -9,6 +9,9 @@ console.log("=== Express Routing Demo (3 Alag Servers) ===\n");
 const homeApp = express();
 
 homeApp.get('/', (req, res) => {
+    // req ka use: Hum dekh sakte hain ki user ne konsa rasta (URL) manga hai
+    console.log("👉 [Port 3000] User ne ye rasta manga:", req.url);
+    
     // Express me hum direct res.send() use karte hain (response.end() ki zarurat nahi)
     res.send("<h1>Welcome to Home Page</h1><p>Ye Express ki sabse basic routing hai!</p>");
 });
@@ -30,6 +33,9 @@ homeApp.listen(3000, () => {
 const aboutApp = express();
 
 aboutApp.get('/about', (req, res) => {
+    // req ka use: Agar koi browser me "http://localhost:3001/about" type karega, toh req.url "/about" hoga
+    console.log("👉 [Port 3001] User ne ye rasta manga:", req.url);
+    
     res.send("<h1>About Us Page</h1><p>Hum Tausif bhai ke sath Node.js seekh rahe hain.</p>");
 });
 
@@ -50,6 +56,9 @@ aboutApp.listen(3001, () => {
 const apiApp = express();
 
 apiApp.get('/api/user', (req, res) => {
+    // req ka use: Agar frontend ne "http://localhost:3002/api/user" hit kiya, toh req.url me "/api/user" aayega
+    console.log("👉 [Port 3002] User ne ye API mangi:", req.url);
+    
     const userData = {
         name: "Tausif Qureshi",
         role: "Developer",
