@@ -1,0 +1,12 @@
+{
+  "name": "npm_and_packagejson",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Tausif-Qureshi",
+  "type": "commonjs",
+  "main": "practical_installing_packages.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

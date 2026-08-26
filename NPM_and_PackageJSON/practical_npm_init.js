@@ -6,7 +6,7 @@ const runNpmInitPractical = () => {
     console.log("=== Node.js Project Setup Process ===\n");
 
     console.log("Step 1: Ek khali folder banao aur VS Code me kholo.");
-    console.log("Step 2: Terminal open karo aur ye command likho:");
+    console.log("Step 2: Terminal open karo aur ye command likho:");   
     console.log("👉 npm init -y");
 
     console.log("\nResult:");
