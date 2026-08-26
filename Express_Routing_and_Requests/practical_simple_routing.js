@@ -1,61 +1,70 @@
-// Express require karna padta hai
 const express = require('express');
-const app = express();
 
-console.log("=== Express Simple Routing Demo ===\n");
+console.log("=== Express Routing Demo (3 Alag Servers) ===\n");
 
-// ==========================================
-// 1. Root Route (Home Page)
-// ==========================================
-// Jab user direct 'http://localhost:3000/' par jayega
-app.get('/', (req, res) => {
-    // Express me hum direct res.send() use karte hain (response.end() aur content-type ki zaroorat nahi padti)
+// =======================================================
+// 1. HOME ROUTE SERVER - Port 3000
+// =======================================================
+// Ye pehla server banaya jo sirf Home (/) handle karega
+const homeApp = express();
+
+homeApp.get('/', (req, res) => {
+    // Express me hum direct res.send() use karte hain (response.end() ki zarurat nahi)
     res.send("<h1>Welcome to Home Page</h1><p>Ye Express ki sabse basic routing hai!</p>");
 });
 
+// Agar koi aur raste par jaye (404 Error)
+homeApp.use((req, res) => {
+    res.status(404).send("<h1>404 Error - Yahan sirf Home (/) chalta hai! ❌</h1>");
+});
 
-// ==========================================
-// 2. About Route
-// ==========================================
-// Jab user 'http://localhost:3000/about' par jayega
-app.get('/about', (req, res) => {
-    res.send("<h1>About Us Page</h1><p>Hum Tausif bhai ke sath Node.js seekh rahe hain.</p>");
+homeApp.listen(3000, () => {
+    console.log("✅ 1. Home Server Chalu: http://localhost:3000");
 });
 
 
-// ==========================================
-// 3. API Route (JSON Bhejna)
-// ==========================================
-// Jab user 'http://localhost:3000/api/user' par jayega
-app.get('/api/user', (req, res) => {
+// =======================================================
+// 2. ABOUT ROUTE SERVER - Port 3001
+// =======================================================
+// Ye dusra alag server banaya jo sirf About (/about) handle karega
+const aboutApp = express();
+
+aboutApp.get('/about', (req, res) => {
+    res.send("<h1>About Us Page</h1><p>Hum Tausif bhai ke sath Node.js seekh rahe hain.</p>");
+});
+
+// Agar koi aur raste par jaye (404 Error)
+aboutApp.use((req, res) => {
+    res.status(404).send("<h1>404 Error - Yahan sirf /about chalta hai! ❌</h1>");
+});
+
+aboutApp.listen(3001, () => {
+    console.log("✅ 2. About Server Chalu: http://localhost:3001/about");
+});
+
+
+// =======================================================
+// 3. API ROUTE SERVER (JSON Bhejna) - Port 3002
+// =======================================================
+// Ye teesra alag server banaya jo sirf API (/api/user) handle karega
+const apiApp = express();
+
+apiApp.get('/api/user', (req, res) => {
     const userData = {
         name: "Tausif Qureshi",
         role: "Developer",
         skill: "Express.js"
     };
-    // Express me object ko JSON me badalne ke liye (JSON.stringify) ki zarurat nahi hai!
-    // Bas res.json() use karo, Express sab khud sambhal lega.
+    // Express me object ko JSON me badalne ke liye res.json() use karo
     res.json(userData); 
 });
 
-
-// ==========================================
-// 4. Fallback (404 Error Route)
-// ==========================================
-// Express me agar koi route na mile toh sabse aakhiri me 'app.use' chal jata hai
-app.use((req, res) => {
-    // status(404) set karke directly error page bhej diya
-    res.status(404).send("<h1>404 Error - Page Not Found ❌</h1><p>Bhai aap galat URL par aagaye ho!</p>");
+// Agar koi aur raste par jaye (404 Error)
+apiApp.use((req, res) => {
+    res.status(404).send("<h1>404 Error - Yahan sirf /api/user chalta hai! ❌</h1>");
 });
 
-
-// ==========================================
-// Server Start Karna
-// ==========================================
-app.listen(3000, () => {
-    console.log("✅ Express Server Chalu ho gaya hai!");
-    console.log("👉 Home: http://localhost:3000");
-    console.log("👉 About: http://localhost:3000/about");
-    console.log("👉 API Test: http://localhost:3000/api/user");
-    console.log("👉 404 Error Test: http://localhost:3000/kuchbhi");
+apiApp.listen(3002, () => {
+    console.log("✅ 3. API Server Chalu: http://localhost:3002/api/user");
+    console.log("\n⚠️ Note: Sabhi servers ko ek sath band karne ke liye terminal me 'Ctrl + C' dabayein.");
 });
