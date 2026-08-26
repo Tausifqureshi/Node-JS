@@ -35,27 +35,7 @@ const server = http.createServer((request, response) => {
     } 
     
     // ==========================================
-    // 3. HTML Code Send Route
-    // ==========================================
-    else if (request.url === '/html') {
-        // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
-        response.writeHead(200, {'Content-Type': 'text/html'});
-        
-        // HTML structure directly response me bhej sakte hain
-        const htmlContent = `
-            <html>
-                <head><title>My Node Server</title></head>
-                <body style="font-family: Arial; text-align: center; margin-top: 50px;">
-                    <h1 style="color: blue;">Welcome to Node.js HTML Page! 🚀</h1>
-                    <p>Ye page direct server se aa raha hai, bina kisi frontend framework ke.</p>
-                </body>
-            </html>
-        `;
-        response.end(htmlContent);
-    } 
-    
-    // ==========================================
-    // 4. Fallback / 404 Route (Agar koi galat URL par jaye)
+    // 3. Fallback / 404 Route (Agar koi galat URL par jaye)
     // ==========================================
     else {
         response.writeHead(404, {'Content-Type': 'text/plain'});
@@ -78,6 +58,36 @@ server.listen(3000, () => {
     console.log("👉 Sahi page ke liye browser me kholen: http://localhost:3000");
     console.log("👉 Error (404) test karne ke liye kholen: http://localhost:3000/kuchbhi");
     console.log("👉 JSON Object test karne ke liye kholen: http://localhost:3000/api/user");
-    console.log("👉 HTML Page test karne ke liye kholen: http://localhost:3000/html");
-    console.log("\n⚠️ Note: Server ko band karne ke liye terminal me 'Ctrl + C' dabayein.");
+    console.log("\n⚠️ Note: Sabhi servers ko band karne ke liye terminal me 'Ctrl + C' dabayein.");
+});
+
+
+// =======================================================
+// HTML KA KAAM BHEJNE KA TARIKA (Alag Server Par)
+// =======================================================
+const htmlServer = http.createServer((request, response) => {
+    // Header me Content-Type ko 'text/html' dena zaroori hai, tabhi browser isko webpage samjhega
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    
+    // HTML structure directly response me bhej sakte hain
+    const htmlContent = `
+        <html>
+            <head><title>My Node Server</title></head>
+            <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+                <h1 style="color: blue;">Welcome to Node.js HTML Page! 🚀</h1>
+                <p>Ye HTML page alag server se aa raha hai.</p>
+            </body>
+        </html>
+    `;
+    response.end(htmlContent);
+});
+
+htmlServer.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.log("❌ ERROR: Port 3001 pehle se busy hai!");
+    }
+});
+
+htmlServer.listen(3001, () => {
+    console.log("\n✅ HTML Server alag se chalu ho gaya hai: http://localhost:3001");
 });
