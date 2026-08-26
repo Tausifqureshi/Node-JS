@@ -5,7 +5,7 @@ console.log("=== Express Routing Demo (3 Alag Servers) ===\n");
 // =======================================================
 // 1. HOME ROUTE SERVER - Port 3000
 // =======================================================
-// Ye pehla server banaya jo sirf Home (/) handle karega
+// Ye pehla server banaya jo sirf Home (http://localhost:3000/) handle karega
 const homeApp = express();
 
 homeApp.get('/', (req, res) => {
@@ -15,7 +15,7 @@ homeApp.get('/', (req, res) => {
 
 // Agar koi aur raste par jaye (404 Error)
 homeApp.use((req, res) => {
-    res.status(404).send("<h1>404 Error - Yahan sirf Home (/) chalta hai! ❌</h1>");
+    res.status(404).send("<h1>404 Error - Yahan sirf Home (http://localhost:3000/) chalta hai! ❌</h1>");
 });
 
 homeApp.listen(3000, () => {
@@ -26,7 +26,7 @@ homeApp.listen(3000, () => {
 // =======================================================
 // 2. ABOUT ROUTE SERVER - Port 3001
 // =======================================================
-// Ye dusra alag server banaya jo sirf About (/about) handle karega
+// Ye dusra alag server banaya jo sirf About (http://localhost:3001/about) handle karega
 const aboutApp = express();
 
 aboutApp.get('/about', (req, res) => {
@@ -35,7 +35,7 @@ aboutApp.get('/about', (req, res) => {
 
 // Agar koi aur raste par jaye (404 Error)
 aboutApp.use((req, res) => {
-    res.status(404).send("<h1>404 Error - Yahan sirf /about chalta hai! ❌</h1>");
+    res.status(404).send("<h1>404 Error - Yahan sirf About (http://localhost:3001/about) chalta hai! ❌</h1>");
 });
 
 aboutApp.listen(3001, () => {
@@ -46,7 +46,7 @@ aboutApp.listen(3001, () => {
 // =======================================================
 // 3. API ROUTE SERVER (JSON Bhejna) - Port 3002
 // =======================================================
-// Ye teesra alag server banaya jo sirf API (/api/user) handle karega
+// Ye teesra alag server banaya jo sirf API (http://localhost:3002/api/user) handle karega
 const apiApp = express();
 
 apiApp.get('/api/user', (req, res) => {
@@ -61,7 +61,7 @@ apiApp.get('/api/user', (req, res) => {
 
 // Agar koi aur raste par jaye (404 Error)
 apiApp.use((req, res) => {
-    res.status(404).send("<h1>404 Error - Yahan sirf /api/user chalta hai! ❌</h1>");
+    res.status(404).send("<h1>404 Error - Yahan sirf API (http://localhost:3002/api/user) chalta hai! ❌</h1>");
 });
 
 apiApp.listen(3002, () => {
