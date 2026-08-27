@@ -8,15 +8,28 @@ const runBasicHttpServer = () => {
     console.log("=== Normal HTTP Server ===\n");
 
     const server = http.createServer((req, res) => {
-        // Headers dena achhi practice hai (Browser ko batane ke liye ki text bhej rahe hain)
-        res.writeHead(200, {
-            "Content-Type": "text/plain"
-        });
-
-        res.end("Hello Bhai! Server chal raha hai.");
+        if (req.url === '/') {
+            // Headers dena achhi practice hai (Browser ko batane ke liye ki text bhej rahe hain)
+            res.writeHead(200, {
+                "Content-Type": "text/plain"
+            });
+            res.end("Hello Bhai! Server chal raha hai.");
+        } else {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end("404 Error: Yahan sirf / (Home) chalta hai!");
+        }
     });
 
     const PORT = 3007;
+
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        } else {
+            console.log("❌ SERVER ERROR:", err.message);
+        }
+    });
+
     server.listen(PORT, () => {
         console.log(`🚀 Normal HTTP Server chal raha hai! 👉 http://localhost:${PORT}`);
     });
@@ -48,6 +61,15 @@ const runAdvancedNodeHttpServer = () => {
     });
 
     const PORT = 3005;
+
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        } else {
+            console.log("❌ SERVER ERROR:", err.message);
+        }
+    });
+
     server.listen(PORT, () => {
         console.log(`🚀 Advanced Core HTTP Server is running!`);
         console.log(`👉 API check karein: http://localhost:${PORT}`);

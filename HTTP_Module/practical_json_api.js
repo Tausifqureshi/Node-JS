@@ -34,6 +34,15 @@ const runJsonApiPractical = () => {
     });
 
     const PORT = 3003;
+    
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        } else {
+            console.log("❌ SERVER ERROR:", err.message);
+        }
+    });
+
     server.listen(PORT, () => {
         console.log(`🚀 JSON API Server is running!`);
         console.log(`👉 JSON Response dekhne ke liye browser me open karein: http://localhost:${PORT}/api/users`);

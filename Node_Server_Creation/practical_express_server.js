@@ -13,9 +13,16 @@ const runBasicExpressServer = () => {
         res.send("Hello Bhai! Ye ek dum normal aur basic Express.js server hai.");
     });
 
+    app.use((req, res) => {
+        res.status(404).send("404 Error: Yahan sirf / (Home) chalta hai!");
+    });
+
     const PORT = 3008;
     app.listen(PORT, () => {
         console.log(`🚀 Normal Express Server chal raha hai! 👉 http://localhost:${PORT}`);
+    }).on('error', (err) => {
+        if (err.code === 'EADDRINUSE') console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        else console.log("❌ SERVER ERROR:", err.message);
     });
 };
 // runBasicExpressServer(); // Uncomment to run
@@ -54,11 +61,18 @@ const runAdvancedExpressServer = () => {
         }
     });
 
+    app.use((req, res) => {
+        res.status(404).json({ success: false, message: "404 Error: Route not found!" });
+    });
+
     const PORT = 3006;
     app.listen(PORT, () => {
         console.log(`🚀 Modern Express Server is running!`);
         console.log(`👉 Home API check karein: http://localhost:${PORT}`);
         console.log(`👉 POST API ke liye Postman use karein: http://localhost:${PORT}/api/login`);
+    }).on('error', (err) => {
+        if (err.code === 'EADDRINUSE') console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        else console.log("❌ SERVER ERROR:", err.message);
     });
 };
 

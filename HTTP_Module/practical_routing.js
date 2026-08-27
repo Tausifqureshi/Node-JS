@@ -30,6 +30,15 @@ const runRoutingPractical = () => {
     });
 
     const PORT = 3002;
+
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`❌ ERROR: Port ${PORT} pehle se busy hai!`);
+        } else {
+            console.log("❌ SERVER ERROR:", err.message);
+        }
+    });
+
     server.listen(PORT, () => {
         console.log(`🚀 Routing Server chal gaya!`);
         console.log(`👉 Open: http://localhost:${PORT}`);

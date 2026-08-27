@@ -23,6 +23,9 @@ homeApp.use((req, res) => {
 
 homeApp.listen(3000, () => {
     console.log("✅ 1. Home Server Chalu: http://localhost:3000");
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3000 pehle se busy hai!");
+    else console.log("❌ SERVER ERROR:", err.message);
 });
 
 
@@ -55,6 +58,9 @@ aboutApp.use((req, res) => {
 
 aboutApp.listen(3001, () => {
     console.log("✅ 2. About Server Chalu: http://localhost:3001/about");
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3001 pehle se busy hai!");
+    else console.log("❌ SERVER ERROR:", err.message);
 });
 
 
@@ -85,4 +91,7 @@ apiApp.use((req, res) => {
 apiApp.listen(3002, () => {
     console.log("✅ 3. API Server Chalu: http://localhost:3002/api/user");
     console.log("\n⚠️ Note: Sabhi servers ko ek sath band karne ke liye terminal me 'Ctrl + C' dabayein.");
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3002 pehle se busy hai!");
+    else console.log("❌ SERVER ERROR:", err.message);
 });
