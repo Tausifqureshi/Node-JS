@@ -60,7 +60,7 @@ const jsonServer = http.createServer((request, response) => {
 jsonServer.on('error', (err) => {               
     if (err.code === 'EADDRINUSE') console.log("❌ ERROR: Port 3001 pehle se busy hai!");
 });
-   
+       
 jsonServer.listen(3001, () => {
     console.log("✅ 2. JSON Object Server chalu: http://localhost:3001");
 });
