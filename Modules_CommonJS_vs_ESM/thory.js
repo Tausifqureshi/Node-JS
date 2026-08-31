@@ -75,3 +75,22 @@ const thirdPartyModuleExample = () => {
 };
 
 // thirdPartyModuleExample();
+
+
+// ========================================= 4. Require Module (CommonJS vs ESM) ======================================= //
+// ChatGPT Se Liya Hua Syntex ---> Require ka main kaam ek file se doosri file me data, functions ya objects lana hota hai.
+
+/*
+Dono me farq kya hai?
+
+1. CommonJS (CJS):
+   - Ye Node.js ka purana aur default tareeqa hai.
+   - Bhejne ke liye: module.exports = ...
+   - Lane ke liye: const math = require('./math.js')
+
+2. ES Modules (ESM):
+   - Ye naya tareeqa hai jo React aur modern JS me use hota hai.
+   - Bhejne ke liye: export const add = ...
+   - Lane ke liye: import { add } from './math.js'
+   - Ise chalane ke liye package.json me "type": "module" likhna padta hai.
+*/
