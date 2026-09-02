@@ -52,6 +52,7 @@ const runAdvancedExpressServer = () => {
     });
 
     app.post('/api/login', (req, res) => {
+        // Real Case: Jab user login form (frontend) me email/password daal kar submit karta hai, toh Express un secret details ko 'req.body' me pakad leta hai taaki unhe verify kiya ja sake.
         const { username, password } = req.body;
         
         if(username === "admin" && password === "1234") {

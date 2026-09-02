@@ -8,7 +8,7 @@ const runRoutingPractical = () => {
     console.log("=== HTTP Routing Ka Asli Use ===\n");
 
     const server = http.createServer((req, res) => {
-        // req.url me path hota hai (jaise '/about')
+        // Real Case: Jab user kisi specific page (jaise '/about') pe jana chahta hai, toh 'req.url' batata hai ki user kahan jana chahta hai. Iske base par hum tay karte hain kaunsa page dikhana hai.
         const url = req.url;
 
         res.writeHead(200, { 'Content-Type': 'text/html' });

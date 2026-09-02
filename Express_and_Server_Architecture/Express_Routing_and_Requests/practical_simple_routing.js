@@ -9,7 +9,7 @@ console.log("=== Express Routing Demo (3 Alag Servers) ===\n");
 const homeApp = express();
 
 homeApp.get('/', (req, res) => {
-    // req ka use: Hum dekh sakte hain ki user ne konsa rasta (URL) manga hai
+    // Real Case: Alag-alag modules (User, Admin, Vendor) ki APIs ko monitor karne ke liye hum 'req.url' log karte hain ki kaun kis raste pe ja raha hai.
     console.log("👉 [Port 3000] User ne ye rasta manga:", req.url);
     
     // Express me hum direct res.send() use karte hain (response.end() ki zarurat nahi)
@@ -36,7 +36,7 @@ homeApp.listen(3000, () => {
 const aboutApp = express();
 
 aboutApp.get('/about', (req, res) => {
-    // req ka use: Agar koi browser me "http://localhost:3001/about" type karega, toh req.url "/about" hoga
+    // Real Case: Analytics track karne ke liye, ki kitne users "/about" page par aaye, hum 'req.url' ka data database me save karte hain.
     console.log("👉 [Port 3001] User ne ye rasta manga:", req.url);
     
     // Yahan hum wo Data (JSON) bana rahe hain jo Frontend ko bhejenge
@@ -71,7 +71,7 @@ aboutApp.listen(3001, () => {
 const apiApp = express();
 
 apiApp.get('/api/user', (req, res) => {
-    // req ka use: Agar frontend ne "http://localhost:3002/api/user" hit kiya, toh req.url me "/api/user" aayega
+    // Real Case: Rate limiting (e.g., 1 min me 100 request) lagane ke liye hum check karte hain ki user kis 'req.url' (API) ko baar-baar hit kar raha hai.
     console.log("👉 [Port 3002] User ne ye API mangi:", req.url);
     
     const userData = {

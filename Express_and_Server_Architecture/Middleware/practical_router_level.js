@@ -11,6 +11,7 @@ const runRouterLevelPractical = () => {
     // Middleware: Check if user is logged in
     const checkLogin = (req, res, next) => {
         // Manlo query me ?user=admin bheja gaya hai
+        // Real Case: Check karna ki user login hai ya nahi. Yahan hum req.query se user nikal rahe hain, par asli app me ye token req.headers ya cookies se aata hai.
         const user = req.query.user;
 
         if (user === 'admin') {

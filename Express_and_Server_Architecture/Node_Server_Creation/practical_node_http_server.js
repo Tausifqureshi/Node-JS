@@ -8,6 +8,7 @@ const runBasicHttpServer = () => {
     console.log("=== Normal HTTP Server ===\n");
 
     const server = http.createServer((req, res) => {
+        // Real Case: Server tab tak koi reply nahi deta jab tak use ye pata na ho ki 'req.url' kya hai. Agar URL '/' hai, toh wo samjhega homepage manga hai.
         if (req.url === '/') {
             // Headers dena achhi practice hai (Browser ko batane ke liye ki text bhej rahe hain)
             res.writeHead(200, {
@@ -47,6 +48,7 @@ const runAdvancedNodeHttpServer = () => {
         // CORS headers zaroori hote hain agar frontend (React) aur backend alag-alag port pe hon
         res.setHeader('Access-Control-Allow-Origin', '*');
 
+        // Real Case: Yahan API request verify kar rahe hain. URL aur Method dono check hote hain taaki confirm ho ki data maanga (GET) ja raha hai.
         if (req.url === '/' && req.method === 'GET') {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({

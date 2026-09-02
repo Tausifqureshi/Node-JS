@@ -15,6 +15,7 @@ const runReqQueryPractical = () => {
 
     // Yahan route me '?category=mobile' likhne ki zarurat nahi hoti, Express usko khud pakad leta hai
     app.get('/api/products', (req, res) => {
+        // Real Case: E-commerce sites (jaise Amazon) par user jo filter lagata hai (Mobile, Under 10k), wo URL me '?category=mobile' bankar aate hain. Unhe hum 'req.query' se nikalte hain.
         // 'req.query' se values nikali
         const categoryFilter = req.query.category;
         const maxPrice = req.query.maxPrice;

@@ -12,6 +12,7 @@ const runAppLevelPractical = () => {
     // Ye hai hamara Middleware Function
     const timeLogger = (req, res, next) => {
         const time = new Date().toLocaleTimeString();
+        // Real Case: Logging me humein janna hota hai ki kahan (path) request gayi, aur kis type ki (method). Ye req.path aur req.method se milta hai.
         console.log(`[LOGGER] Request Type: ${req.method} | Path: ${req.path} | Time: ${time}`);
         
         // Agar next() nahi bulayenge toh request yahin ruk jayegi!

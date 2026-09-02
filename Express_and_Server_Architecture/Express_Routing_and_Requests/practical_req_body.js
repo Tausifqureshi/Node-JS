@@ -14,6 +14,7 @@ const runReqBodyPractical = () => {
     // Jab data create/save karna ho toh hamesha POST request use karte hain
     app.post('/api/register', (req, res) => {
         
+        // Real Case: Jab user apni details (Email, Password) form me daal kar register/login karta hai, toh Express un chhipi hui (secret) details ko 'req.body' me rakhta hai taaki hum use database me save ya verify kar sakein.
         // Frontend se bheja gaya data nikalna
         const { username, email, password } = req.body;
 

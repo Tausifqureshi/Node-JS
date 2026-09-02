@@ -15,6 +15,7 @@ const runJsonApiPractical = () => {
 
     const server = http.createServer((req, res) => {
         
+        // Real Case: REST API me URL '/api/users' batata hai data kya hai, aur Method 'GET' batata hai ki data "lena" hai (agar 'POST' hota toh data "save" karna hota).
         // API Route: /api/users
         if (req.url === '/api/users' && req.method === 'GET') {
             // Browser ko batana ki hum 'JSON' bhej rahe hain

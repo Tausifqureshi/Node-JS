@@ -19,6 +19,7 @@ const getUsers = (req, res) => {
 
 // Handler 2: Naya user banana
 const createUser = (req, res) => {
+    // Real Case: Frontend se aane wala data (jaise user ka naam, email) seedha controller me aakar 'req.body' se nikala jata hai.
     const { name } = req.body;
     
     if (!name) {

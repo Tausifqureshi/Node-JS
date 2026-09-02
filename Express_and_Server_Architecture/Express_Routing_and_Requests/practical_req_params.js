@@ -16,6 +16,7 @@ const runReqParamsPractical = () => {
 
     // ':id' ek dynamic parameter hai. Ye kuch bhi ho sakta hai (1, 2, 'tausif').
     app.get('/api/users/:id', (req, res) => {
+        // Real Case: Jab hum Facebook/Instagram me kisi user ki profile kholte hain (jaise /tausif), toh backend '/:id' route banata hai aur 'req.params.id' se us specific user ka data nikal kar dikhata hai.
         // req.params se 'id' nikal li (Ye hamesha string format me milti hai)
         const userId = parseInt(req.params.id); 
 
