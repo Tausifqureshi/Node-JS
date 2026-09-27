@@ -3,7 +3,7 @@
 // Is practical me hum ek package 'uuid' ka use karke ek random secure user ID banayenge.
 
 // Is code ko chalane ke liye pehle terminal me likhein: npm install uuid
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 
 const runInstallingPackagesPractical = () => {
     console.log("=== Third Party Package (NPM) Ka Asli Use ===\n");
