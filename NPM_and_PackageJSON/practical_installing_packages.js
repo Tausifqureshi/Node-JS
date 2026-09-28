@@ -6,7 +6,7 @@
 const { v4: uuidv4 } = require('uuid');
 
 const runInstallingPackagesPractical = () => {
-    console.log("=== Third Party Package (NPM) Ka Asli Use ===\n")
+    console.log("=== Third Party Package (NPM) Ka Asli Use ===");
 
     // Maan lo ek naya user register ho raha hai database me
     const newUser = {
