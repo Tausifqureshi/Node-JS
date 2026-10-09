@@ -11,8 +11,8 @@ const runInstallingPackagesPractical = () => {
     // Maan lo ek naya user register ho raha hai database me
     const newUser = {
         name: "Tausif Qureshi",
-        email: "tausif@example.com",
-        role: "Admin",
+        email: "tausif@example.com",           
+        role: "Admin"
     };
 
     console.log("User Register ho raha hai...");
