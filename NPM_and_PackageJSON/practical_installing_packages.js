@@ -12,7 +12,7 @@ const runInstallingPackagesPractical = () => {
     const newUser = {
         name: "Tausif Qureshi",
         email: "tausif@example.com",
-        role: "Admin"
+        role: "Admin",
     };
 
     console.log("User Register ho raha hai...");
